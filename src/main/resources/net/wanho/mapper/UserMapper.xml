@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--命名空间指向对应的接口-->
+<mapper namespace="net.wanho.mapper.UserMapper">
+
+    <insert id="addUser" parameterType="User">
+            insert into user values(null,#{username},#{password})
+
+    </insert>
+    <insert id="addUserReturnKey" useGeneratedKeys="true" keyProperty="id">
+
+        insert into user values(null,#{username},#{password})
+    </insert>
+
+    <update id="updateUser" parameterType="User">
+        UPDATE user SET username=#{username} where id=#{id}
+
+    </update>
+    <delete id="deleteUser" parameterType="User">
+        DELETE FROM USER WHERE id=#{id}
+
+    </delete>
+    <select id="getAllUser" resultType="net.wanho.entity.User">
+        SELECT * FROM USER
+    </select>
+    <select id="getUserById" resultType="net.wanho.entity.User">
+        SELECT * from USER WHERE id =#{id}
+    </select>
+    <select id="getUserByName" resultType="net.wanho.entity.User"></select>
+    <select id="getUserByName2" resultType="net.wanho.entity.User"></select>
+
+
+</mapper>
